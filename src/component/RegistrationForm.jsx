@@ -96,6 +96,8 @@ const RegistrationForm = () => {
                             onChange={handleInputChange}
                             className="input"
                         />
+                        {errors.lastName && <span className="error">{errors.lastName}</span>}
+
                         <input
                             type="email"
                             placeholder="Email"
@@ -104,6 +106,8 @@ const RegistrationForm = () => {
                             onChange={handleInputChange}
                             className="input"
                         />
+                        {errors.email && <span className="error">{errors.email}</span>}
+
                         <input
                             type="text"
                             placeholder="Contact"
@@ -112,6 +116,7 @@ const RegistrationForm = () => {
                             onChange={handleInputChange}
                             className="input"
                         />
+                        {errors.contact && <span className="error">{errors.contact}</span>}
 
                         <div className="main">
                             <input
@@ -123,6 +128,7 @@ const RegistrationForm = () => {
                                 value={formData.password}
                                 onChange={handleInputChange}
                             />
+                            {errors.password && <span className="error">{errors.password}</span>}
                             <div className="password-toggle">
                                 <p
                                     onClick={() => setShowPass(!showPass)}
@@ -147,6 +153,7 @@ const RegistrationForm = () => {
                                 value={formData.confirmPassword}
                                 onChange={handleInputChange}
                             />
+                            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
                             <div className="password-toggle">
                                 <p
                                     onClick={() => setShowConfirmPass(!showConfirmPass)}
