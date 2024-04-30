@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './RegistrationForm.css';
+import { PiEyeLight, PiEyeSlash } from 'react-icons/pi';
 
 const useFormValidation = () => {
     const [formData, setFormData] = useState({
@@ -21,16 +22,19 @@ const useFormValidation = () => {
             newErrors.lastName = 'Last Name is required';
         }
         if (!formData.email.trim()) {
-            newErrors.email = 'email must be required';
+            newErrors.email = 'Email is required';
         }
         if (!formData.contact.trim()) {
-            newErrors.contact = 'contact number is required';
+            newErrors.contact = 'Contact number is required';
         }
         if (!formData.password.trim()) {
-            newErrors.password = 'please password is required';
+            newErrors.password = 'Password is required';
         }
         if (!formData.confirmPassword.trim()) {
-            newErrors.confirmPassword = 'please confirmPassword is required';
+            newErrors.confirmPassword = 'Confirm Password is required';
+        }
+        if (formData.password !== formData.confirmPassword) {
+            newErrors.confirmPassword = 'Passwords do not match';
         }
 
         setErrors(newErrors);
@@ -41,11 +45,21 @@ const useFormValidation = () => {
 };
 
 const RegistrationForm = () => {
+    const [showPass, setShowPass] = useState(false)
+    const [showConfirmPass, setShowConfirmPass] = useState(false)
     const { formData, setFormData, errors, validateForm } = useFormValidation();
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
             console.log('Form submitted with data:', formData);
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                contact: '',
+                password: '',
+                confirmPassword: ''
+            });
         } else {
             console.log('Form has validation errors. Please fix them.');
         }
@@ -98,22 +112,54 @@ const RegistrationForm = () => {
                             onChange={handleInputChange}
                             className="input"
                         />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleInputChange}
-                            className="input"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleInputChange}
-                            className="input"
-                        />
+
+                        <div className="main">
+                            <input
+                                type={showPass ? "text" : "password"}
+                                name="password"
+                                placeholder="password"
+                                className="input input-bordered"
+                                required
+                                value={formData.password}
+                                onChange={handleInputChange}
+                            />
+                            <div className="password-toggle">
+                                <p
+                                    onClick={() => setShowPass(!showPass)}
+                                    className="toggle-icon"
+                                >
+                                    {showPass ? (
+                                        <PiEyeLight />
+                                    ) : (
+                                        <PiEyeSlash />
+                                    )}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="main">
+                            <input
+                                type={showConfirmPass ? "text" : "password"}
+                                name="confirmPassword"
+                                placeholder="confirm password"
+                                className="input input-bordered"
+                                required
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange}
+                            />
+                            <div className="password-toggle">
+                                <p
+                                    onClick={() => setShowConfirmPass(!showConfirmPass)}
+                                    className="toggle-icon"
+                                >
+                                    {showConfirmPass ? (
+                                        <PiEyeLight />
+                                    ) : (
+                                        <PiEyeSlash />
+                                    )}
+                                </p>
+                            </div>
+                        </div>
 
                         <input
                             className="btn"

@@ -66,11 +66,29 @@
 .btn:last-child {
   margin-top: 10px;
 }
+.main{
+  position: relative;
+}
+.password-toggle {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-icon {
+  color: #555;
+}
+
+.toggle-icon:hover {
+  color: #333;
+}
 
 @media screen and (max-width: 768px) {
   .registration-form {
     max-width: 80%;
-    right: 20px;
+   
   }
 }
 
@@ -79,10 +97,7 @@
     background-position: center;
   }
   .registration-form {
-    right: 0px;
+    left: 5px;
     top: 50px;
-    left: 0px;
-    bottom: 0px;
-    margin: 0px, auto;
   }
 }
