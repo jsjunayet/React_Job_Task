@@ -1,0 +1,88 @@
+.background-image-wrapper {
+  background-image: url('https://images.pexels.com/photos/1629998/pexels-photo-1629998.jpeg?auto=compress&cs=tinysrgb&w=1180&h=750&dpr=1');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1224px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.registration-form {
+  width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f0942b4b;
+  border-radius: 20px;
+  background-color: #eaeaea2d;
+  padding: 20px;
+  position: absolute;
+  right: 5px;
+  top: 50px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  border: 1px solid #ccc;
+  outline: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  width: 98%;
+
+}
+.btn {
+  display: inline-block;
+  background-color: #010101;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #0a3d62;
+}
+
+.btn:last-child {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .registration-form {
+    max-width: 80%;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .background-image-wrapper {
+    background-position: center;
+  }
+  .registration-form {
+    right: 0px;
+    top: 50px;
+    left: 0px;
+    bottom: 0px;
+    margin: 0px, auto;
+  }
+}

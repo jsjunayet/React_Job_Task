@@ -1,8 +1,9 @@
+import RegistrationForm from "./component/RegistrationForm";
 
 const App = () => {
   return (
     <div>
-      Job task
+      <RegistrationForm></RegistrationForm>
     </div>
   );
 };
